@@ -235,6 +235,57 @@ body {
 }
 /* end next film */
 
+/* Top Rating, film trending*/
+.top-rating,
+.film-trending {
+  background-color: black;
+  padding: 0.5rem 7% 1.4rem;
+}
+.rilis-baru {
+  background-color: black;
+  padding: 0.5rem 7% 10rem;
+}
+
+.top-rating h2,
+.film-trending h2,
+.rilis-baru h2 {
+  margin: 20px 0px;
+}
+
+.top-rating .row,
+.film-trending .row,
+.rilis-baru .row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.5rem;
+}
+
+/* End Top Rating, film trending */
+
+/* Footer */
+footer {
+  background-color: black;
+  padding: 10rem 7% 5rem;
+  border-top: 1px solid gray;
+}
+footer .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer p {
+  padding: 25px 0;
+}
+
+footer .title,
+footer ul li,
+footer table td {
+  line-height: 1.5; /* Biar teksnya renggang */
+  padding: 4px 30px; /* Jarak vertikal antar teks */
+}
+
 /* media queries */
 
 /* laptop */
