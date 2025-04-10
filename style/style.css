@@ -261,6 +261,39 @@ body {
   gap: 3.5rem;
 }
 
+.top-rating .row .col,
+.film-trending .row .col,
+.rilis-baru .row .col {
+  position: relative;
+  display: inline-block;
+}
+
+.top-rating .row .col .cursor-left,
+.top-rating .row .col .cursor-right,
+.film-trending .row .col .cursor-left,
+.film-trending .row .col .cursor-right,
+.rilis-baru .row .col .cursor-left,
+.rilis-baru .row .col .cursor-right {
+  position: absolute;
+  top: 50%;
+  color: white;
+  background-color: #2f3334;
+  padding: 10px;
+  border-radius: 100px;
+}
+
+.top-rating .row .col .cursor-left,
+.film-trending .row .col .cursor-left,
+.rilis-baru .row .col .cursor-left {
+  left: -10%;
+}
+
+.top-rating .row .col .cursor-right,
+.film-trending .row .col .cursor-right,
+.rilis-baru .row .col .cursor-right {
+  right: -10%;
+}
+
 /* End Top Rating, film trending */
 
 /* Footer */
@@ -282,8 +315,9 @@ footer p {
 footer .title,
 footer ul li,
 footer table td {
-  line-height: 1.5; /* Biar teksnya renggang */
-  padding: 4px 30px; /* Jarak vertikal antar teks */
+  line-height: 1.5;
+  padding: 4px 30px;
+  list-style: none;
 }
 
 /* media queries */
