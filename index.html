@@ -108,35 +108,50 @@
     </section>
     <!-- end next film -->
 
-    <!-- Top rating end Series today -->
+    <!-- Top rating Series today -->
     <section class="top-rating">
       <h2>Top Rating Film Dan Series Hari Ini</h2>
-      <div class="row">
-        <div class="col">
-          <div class="cursor-left"><i data-feather="arrow-left"></i></div>
-          <div class="status">Episode baru</div>
-          <img src="img/top-rating/film1.png" alt="Suzume" />
+      <div class="carousel-container">
+        <div class="cursor-left"><i data-feather="arrow-left"></i></div>
+
+        <div class="carousel-track">
+          <div class="col">
+            <div class="status">Episode baru</div>
+            <img src="img/top-rating/film1.png" alt="Suzume" />
+          </div>
+          <div class="col">
+            <div class="status">Episode baru</div>
+            <img src="img/top-rating/film2.png" alt="Jurasic World" />
+          </div>
+          <div class="col">
+            <div class="status">Episode baru</div>
+            <img src="img/top-rating/film3.png" alt="Sonic" />
+          </div>
+          <div class="col">
+            <div class="status">Episode baru</div>
+            <img src="img/top-rating/film4.png" alt="All Off Us" />
+          </div>
+          <div class="col">
+            <div class="status">Episode baru</div>
+            <img src="img/top-rating/film5.png" alt="Big Hero" />
+          </div>
+          <div class="col">
+            <div class="status">Episode baru</div>
+            <img src="img/top-rating/film5.png" alt="Big Hero" />
+          </div>
+          <div class="col">
+            <div class="status">Episode baru</div>
+            <img src="img/top-rating/film5.png" alt="Big Hero" />
+          </div>
+          <div class="col">
+            <div class="status">Episode baru</div>
+            <img src="img/top-rating/film5.png" alt="Big Hero" />
+          </div>
         </div>
-        <div class="col">
-          <div class="status">Episode baru</div>
-          <img src="img/top-rating/film2.png" alt="Jurasic World" />
-        </div>
-        <div class="col">
-          <div class="status">Episode baru</div>
-          <img src="img/top-rating/film3.png" alt="Sonic" />
-        </div>
-        <div class="col">
-          <div class="status">Episode baru</div>
-          <img src="img/top-rating/film4.png" alt="All Off Us" />
-        </div>
-        <div class="col">
-          <div class="cursor-right"><i data-feather="arrow-right"></i></div>
-          <div class="status">Episode baru</div>
-          <img src="img/top-rating/film5.png" alt="Big Hero" />
-        </div>
+        <div class="cursor-right"><i data-feather="arrow-right"></i></div>
       </div>
     </section>
-    <!-- Top rating end Series today End -->
+    <!-- End -->
 
     <!-- Film trending -->
     <section class="film-trending">
@@ -250,6 +265,74 @@
     <!-- father icon -->
     <script>
       feather.replace();
+
+      // carousel
+      document.addEventListener("DOMContentLoaded", function () {
+        const track = document.querySelector(".carousel-track");
+        const items = document.querySelectorAll(".carousel-track .col");
+        const leftBtn = document.querySelector(".cursor-left");
+        const rightBtn = document.querySelector(".cursor-right");
+        const itemWidth = items[0].offsetWidth + 16; // item width + margin
+        let currentIndex = 0;
+
+        // Clone items untuk looping
+        const firstItem = items[0].cloneNode(true);
+        const lastItem = items[items.length - 1].cloneNode(true);
+        track.appendChild(firstItem);
+        track.insertBefore(lastItem, items[0]);
+
+        // Geser awal ke item[1] (karena item[0] sekarang kloningan)
+        let currentPosition = -itemWidth;
+        track.style.transform = `translateX(${currentPosition}px)`;
+
+        // Geser kanan
+        rightBtn.addEventListener("click", () => {
+          if (currentIndex >= items.length) {
+            // reset tanpa animasi
+            track.style.transition = "none";
+            currentIndex = 0;
+            currentPosition = -itemWidth;
+            track.style.transform = `translateX(${currentPosition}px)`;
+            // pakai timeout biar transisi aktif lagi
+            setTimeout(() => {
+              track.style.transition = "transform 0.5s ease-in-out";
+              currentIndex++;
+              currentPosition -= itemWidth;
+              track.style.transform = `translateX(${currentPosition}px)`;
+            }, 20);
+          } else {
+            currentIndex++;
+            currentPosition -= itemWidth;
+            track.style.transform = `translateX(${currentPosition}px)`;
+          }
+        });
+
+        // Geser kiri
+        leftBtn.addEventListener("click", () => {
+          if (currentIndex <= -1) {
+            // reset tanpa animasi
+            track.style.transition = "none";
+            currentIndex = items.length - 1;
+            currentPosition = -itemWidth * items.length;
+            track.style.transform = `translateX(${currentPosition}px)`;
+            setTimeout(() => {
+              track.style.transition = "transform 0.5s ease-in-out";
+              currentIndex--;
+              currentPosition += itemWidth;
+              track.style.transform = `translateX(${currentPosition}px)`;
+            }, 20);
+          } else {
+            currentIndex--;
+            currentPosition += itemWidth;
+            track.style.transform = `translateX(${currentPosition}px)`;
+          }
+        });
+
+        // Feather icons init
+        if (typeof feather !== "undefined") {
+          feather.replace();
+        }
+      });
     </script>
   </body>
 </html>
