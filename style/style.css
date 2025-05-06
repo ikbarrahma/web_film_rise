@@ -240,6 +240,7 @@ body {
 .film-trending {
   background-color: black;
   padding: 0.5rem 7% 1.4rem;
+  width: 100%;
 }
 .rilis-baru {
   background-color: black;
@@ -343,16 +344,102 @@ footer table td {
   .image-wrapper {
     height: 200px;
   }
+
   .next-film .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 1.5rem;
   }
-  .next-film .row .col .info {
-    height: 60%;
+
+  .next-film .row .col {
+    flex: 0 0 auto;
+    width: 70%;
+    scroll-snap-align: start;
+  }
+
+  .next-film .image-wrapper img {
     width: 100%;
-    padding: 0rem 1rem;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .next-film .title,
+  .next-film .ratting {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .next-film .info {
+    text-align: center;
+  }
+
+  .top-rating .row,
+  .film-trending .row,
+  .rilis-baru .row {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+  }
+
+  .top-rating .row .col,
+  .film-trending .row .col,
+  .rilis-baru .row .col {
+    flex: 0 0 auto;
+    width: 70%;
+    scroll-snap-align: start;
+  }
+
+  .top-rating .row .col img,
+  .film-trending .row .col img,
+  .rilis-baru .row .col img {
+    width: 100%;
+    height: auto;
+  }
+
+  .top-rating .row .col .cursor-right,
+  .film-trending .row .col .cursor-right,
+  .rilis-baru .row .col .cursor-right,
+  .top-rating .row .col .cursor-left,
+  .film-trending .row .col .cursor-left,
+  .rilis-baru .row .col .cursor-left {
+    display: none; /* opsional: sembunyikan panah di mobile */
+  }
+  footer .row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  footer .col {
+    width: 100%;
+  }
+
+  footer .logo img {
+    width: 150px;
+  }
+
+  footer table.excel-table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  footer table.excel-table td {
+    display: inline-block;
+    width: 45%;
+    padding: 4px 10px;
+  }
+
+  footer .title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  footer ul li {
+    padding: 4px 10px;
+    font-size: 0.95rem;
   }
 }
 
@@ -363,12 +450,6 @@ footer table td {
   }
   .navbar-logo img {
     height: 15px;
-  }
-  .next-film .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0rem;
   }
   .next-film .row .col .info {
     height: 60%;
@@ -384,12 +465,6 @@ footer table td {
   }
   .navbar-logo img {
     height: 10px;
-  }
-  .next-film .row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0rem;
   }
   .next-film .row .col .info {
     height: 60%;
